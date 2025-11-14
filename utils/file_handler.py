@@ -1,7 +1,7 @@
 import json
 import os
 
-CONTACTS_FILE = "contacts.json"
+CONTACTS_FILE = "data/contacts.json"
 
 
 def load_contacts():

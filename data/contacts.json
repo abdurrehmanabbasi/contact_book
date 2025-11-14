@@ -1,0 +1,31 @@
+[
+    {
+        "name": "Alice Johnson",
+        "phone": [
+            {
+                "type": "home",
+                "number": "1234"
+            },
+            {
+                "type": "work",
+                "number": "9876"
+            }
+        ],
+        "email": [
+            {
+                "type": "personal",
+                "address": "alice@mail.com"
+            },
+            {
+                "type": "work",
+                "address": "alice@company.com"
+            }
+        ],
+        "address": "",
+        "tags": [
+            "family",
+            "emergency"
+        ],
+        "notes": ""
+    }
+]

@@ -1,4 +1,4 @@
-from utils import file_handler
+from utils.file_handler import load_contacts, save_contacts
 
 
 def command(mode):
@@ -26,25 +26,28 @@ def command(mode):
     return "continue"
     
 def add_contact(name, phones, emails, address="", tags=None, notes=""):
-    contacts = file_handler.load_contacts()
+    contacts = load_contacts()
     for c in contacts:
-        if c["name"].lower == name.lower():
+        if c["name"].lower() == name.lower():
             print(f"❌ Contact {name} already exists.")
             return
-        newcontact = {
+    newcontact = {
             "name":name,
             "phone":phones,
             "email":emails,
             "address":address,
             "tags":tags,
             "notes":notes
-        }
+    }
+    try :
         contacts.append(newcontact)
-        file_handler.save_contacts(contacts)
+        save_contacts(contacts)
+    except Exception :
+        print(Exception)
 
 
 def read_contacts():
-    contacts = file_handler.load_contacts()
+    contacts = load_contacts()
     if not contacts:
         print("Not Contacts Found. ")
         return
@@ -60,7 +63,7 @@ def read_contacts():
 
 
 def update_contact(name, new_phones=None, new_emails=None, new_tags=None):
-    contacts = file_handler.load_contacts()
+    contacts = load_contacts()
     for c in contacts:
         if c["name"].lower() == name.lower():
             if new_phones is not None:
@@ -69,23 +72,23 @@ def update_contact(name, new_phones=None, new_emails=None, new_tags=None):
                 c["emails"] = new_emails
             if new_tags is not None:
                 c["tags"] = new_tags
-            file_handler.save_contacts(contacts)
+            save_contacts(contacts)
             print(f"✏️ Updated contact: {name}")
             return
     print(f"❌ Contact '{name}' not found.")
 
 def delete_contact(name):
-    contacts = file_handler.load_contacts()
+    contacts = load_contacts()
     new_contacts = [c for c in contacts if c["name"].lower() != name.lower()]
     if len(new_contacts) == len(contacts):
         print(f"❌ Contact '{name}' not found.")
         return
-    file_handler.save_contacts(new_contacts)
+    save_contacts(new_contacts)
     print(f"🗑️ Deleted contact: {name}")
 
 def search_by_tag(tag):
     """Find contacts with a specific tag."""
-    contacts = file_handler.load_contacts()
+    contacts = load_contacts()
     tagged = [c for c in contacts if tag.lower() in [t.lower() for t in c.get("tags", [])]]
     if not tagged:
         print(f"🔍 No contacts found with tag '{tag}'.")
