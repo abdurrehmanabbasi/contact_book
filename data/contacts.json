@@ -1,30 +1,16 @@
 [
     {
-        "name": "Alice Johnson",
-        "phone": [
+        "name": "ara",
+        "phones": [
             {
                 "type": "home",
-                "number": "1234"
-            },
-            {
-                "type": "work",
-                "number": "9876"
+                "number": "1234567"
             }
         ],
-        "email": [
-            {
-                "type": "personal",
-                "address": "alice@mail.com"
-            },
-            {
-                "type": "work",
-                "address": "alice@company.com"
-            }
-        ],
+        "emails": [],
         "address": "",
         "tags": [
-            "family",
-            "emergency"
+            "arabro"
         ],
         "notes": ""
     }
